@@ -1,0 +1,34 @@
+@import "~taro-ui/dist/style/components/flex.scss"; // 按道理全局引入之后不需要这个了，不过如果去掉就没有at-col等等这些类了
+
+.movie-card {
+  display: flex;
+}
+.title-text {
+  display: block;
+  font-size: 36rpx;
+  font-weight: bold;
+}
+.desc-text {
+  display: block;
+  font-size: 24rpx;
+  font-weight: lighter;
+}
+.poster-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.poster-img {
+  display: block;
+  padding: 10rpx 4rpx;
+  width: 160rpx;
+  height: 240rpx;
+}
+.info-box {
+  padding-top: 10rpx; 
+}
+.operate-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

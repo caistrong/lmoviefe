@@ -1,0 +1,21 @@
+import Taro from '@tarojs/taro'
+import Fly from 'flyio/dist/npm/wx'
+
+const fly = new Fly;
+
+fly.interceptors.request.use((request) => {
+  const token = Taro.getStorageSync('jwt');
+  //给所有请求添加自定义header
+  request.headers["authorization"] = token;
+  return request;
+})
+
+
+if (process.env.NODE_ENV === 'development') {
+  fly.config.baseURL = 'http://139.199.194.86'
+} else {
+  fly.config.baseURL = 'https://lmovie.xyz'
+}
+
+
+export default fly
