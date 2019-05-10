@@ -1,8 +1,10 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text, Image } from '@tarojs/components'
+import { connect } from '@tarojs/redux'
 import { AtRate, AtIcon, AtFloatLayout, AtToast, AtBadge } from 'taro-ui'
-import fly from '../../constants/fly'
 
+import fly from '../../constants/fly'
+import { userLikeMovie, userUnikeMovie } from '../../actions/behavior'
 import './index.scss'
 
 class MovieCard extends Component {
@@ -58,6 +60,7 @@ class MovieCard extends Component {
           toastText: '已收藏到我喜欢',
           userLike: true,
         })
+        this.props.dispatchUserLikeMovie(this.props.movie.id)
       } else {
         this.setState({
           likingStatus: 'error',
@@ -75,6 +78,7 @@ class MovieCard extends Component {
           toastText: '已取消喜欢',
           userLike: false,
         })
+        this.props.dispatchUserUnikeMovie(this.props.movie.id)
       } else {
         this.setState({
           likingStatus: 'error',
@@ -116,4 +120,17 @@ class MovieCard extends Component {
   }
 }
 
-export default MovieCard
+const mapStateToProps = ({ user }) => ({
+  user
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  dispatchUserLikeMovie(movieId) {
+    dispatch(userLikeMovie(movieId))
+  },
+  dispatchUserUnikeMovie(movieId) {
+    dispatch(userUnikeMovie(movieId))
+  },
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(MovieCard)

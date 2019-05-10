@@ -12,7 +12,7 @@ fly.interceptors.request.use((request) => {
 
 
 if (process.env.NODE_ENV === 'development') {
-  fly.config.baseURL = 'http://139.199.194.86'
+  fly.config.baseURL = 'http://localhost:3003'
 } else {
   fly.config.baseURL = 'https://lmovie.xyz'
 }

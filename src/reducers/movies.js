@@ -1,6 +1,7 @@
 import {
   GET_MOVIES_START, GET_MOVIES_SUCCESS, GET_MOVIES_FAILURE,
-  GET_LIKED_MOVIES_START, GET_LIKED_MOVIES_SUCCESS, GET_LIKED_MOVIES_FAILURE
+  GET_LIKED_MOVIES_START, GET_LIKED_MOVIES_SUCCESS, GET_LIKED_MOVIES_FAILURE,
+  USER_LIKE_MOVIE, USER_UNLIKE_MOVIE
 } from '../constants/actionTypes'
 
 const INITIAL_STATE = {
@@ -43,6 +44,18 @@ export default function movies(state = INITIAL_STATE, action) {
       return {
         ...state,
         getLikedMoviesStatus: action.type
+      }
+    case USER_LIKE_MOVIE:
+      const ml1 = state.movielist.map(movie => movie.id === action.data ? { ...movie, userLikeMovie: true } : movie)
+      return {
+        ...state,
+        movielist: ml1
+      }
+    case USER_UNLIKE_MOVIE:
+      const ml2 = state.movielist.map(movie => movie.id === action.data ? { ...movie, userLikeMovie: true } : movie)
+      return {
+        ...state,
+        movielist: ml2
       }
     default:
       return state
