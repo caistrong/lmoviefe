@@ -4,7 +4,7 @@ import { connect } from '@tarojs/redux'
 import { AtRate, AtIcon, AtFloatLayout, AtToast, AtBadge } from 'taro-ui'
 
 import fly from '../../constants/fly'
-import { userLikeMovie, userUnikeMovie } from '../../actions/behavior'
+import { userLikeMovie, userUnlikeMovie } from '../../actions/behavior'
 import './index.scss'
 
 class MovieCard extends Component {
@@ -78,7 +78,7 @@ class MovieCard extends Component {
           toastText: '已取消喜欢',
           userLike: false,
         })
-        this.props.dispatchUserUnikeMovie(this.props.movie.id)
+        this.props.dispatchUserUnlikeMovie(this.props.movie.id)
       } else {
         this.setState({
           likingStatus: 'error',
@@ -128,8 +128,8 @@ const mapDispatchToProps = (dispatch) => ({
   dispatchUserLikeMovie(movieId) {
     dispatch(userLikeMovie(movieId))
   },
-  dispatchUserUnikeMovie(movieId) {
-    dispatch(userUnikeMovie(movieId))
+  dispatchUserUnlikeMovie(movieId) {
+    dispatch(userUnlikeMovie(movieId))
   },
 })
 

@@ -52,7 +52,7 @@ export default function movies(state = INITIAL_STATE, action) {
         movielist: ml1
       }
     case USER_UNLIKE_MOVIE:
-      const ml2 = state.movielist.map(movie => movie.id === action.data ? { ...movie, userLikeMovie: true } : movie)
+      const ml2 = state.movielist.map(movie => movie.id === action.data ? { ...movie, userLikeMovie: false } : movie)
       return {
         ...state,
         movielist: ml2

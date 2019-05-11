@@ -8,7 +8,7 @@ export const userLikeMovie = (data) => {
     data
   }
 }
-export const userUnikeMovie = (data) => {
+export const userUnlikeMovie = (data) => {
   return {
     type: USER_UNLIKE_MOVIE,
     data
